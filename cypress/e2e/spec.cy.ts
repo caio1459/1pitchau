@@ -1,12 +1,11 @@
-describe("My First Test", () => {
-  it("Visits the Kitchen Sink", () => {
-    cy.visit("http://localhost:3000/contatos");
-    cy.get('input[name="name"]').type("Caio");
-    cy.get('input[name="phone"]').type("123456789");
-    cy.get('input[name="email"]').type("caio@gmail.com");
-    cy.get('select[name="city"]').select("Cidade 1");
-    cy.get('textarea[name="message"]').type("Testando mensagem");
-
+describe('My First Test', () => {
+  it('Visits the Kitchen Sink', () => {
+    cy.visit('http://localhost:3000/contato');
+    cy.get('input[name="nome"]').type('Chinês');
+    cy.get('input[name="telefone"]').type('44 99808000');
+    cy.get('input[name="email"]').type('china@gmail.com');
+    cy.get('select[name="cidade"]').select('Perobal');
+    cy.get('textarea[name="msg"]').type('Melhor E-commerce.');
     cy.get('button[type="submit"]').click();
-  });
-});
+  })
+})
