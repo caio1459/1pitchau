@@ -1,41 +1,91 @@
-import { FormStyle } from "./style"
+import { useEffect, useState } from "react"
+import { Alert, Button, Col, FormStyle, FormTitle, Label } from "./style"
+import axios from "axios"
+import { useForm } from "react-hook-form"
+import { ICidade } from "../../@types/interfaces"
 
 export const Form = () => {
+  const [cidades, setCidades] = useState<ICidade[]>([])
+  const { register, handleSubmit, reset, formState: { errors }, } = useForm()
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/cidades')
+      .then(res => setCidades(res.data))
+      .catch(err => console.error(err))
+  }, [])
+
+  const onSubmit = (data: {}) => {
+    axios.post("http://localhost:3000/contatos", data)
+      .then(() => reset()) // Limpa os campos do formulário
+      .catch(err => console.error(err))
+  }
+
   return (
     <>
-      <FormStyle>
-        <h1>Preencha seus dados</h1>
-        <div>
-          <label htmlFor="name">Nome:</label>
-          <input type="text" id="name" name="name" />
-        </div>
+      <FormStyle onSubmit={handleSubmit(onSubmit)}>
+        <FormTitle>Preencha seus Contatos</FormTitle>
+        <Col>
+          <Label htmlFor="nome">Nome:</Label>
+          <input
+            {...register("nome", { required: true })}
+            type="text"
+            id="nome"
+            placeholder="Digite o seu nome"
+          />
+          {errors.nome?.type === "required" && (<Alert>O nome é obrigatorio!</Alert>)}
+        </Col>
 
-        <div>
-          <label htmlFor="phone">Telefone:</label>
-          <input type="tel" id="phone" name="phone" />
-        </div>
+        <Col>
+          <Label htmlFor="telefone">Telefone:</Label>
+          <input
+            {...register("telefone", { required: true })}
+            type="tel"
+            id="telefone"
+            placeholder="Digite o seu telefone"
+            maxLength={11}
+          />
+          {errors.telefone?.type === "required" && (<Alert>O Telefone é obrigatorio!</Alert>)}
+        </Col>
 
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" />
-        </div>
+        <Col>
+          <Label htmlFor="email">Email:</Label>
+          <input
+            {...register("email", { required: true })}
+            type="email"
+            id="email"
+            placeholder="Digite o seu email"
+          />
+          {errors.email?.type === "required" && (<Alert>O Email é obrigatorio!</Alert>)}
+        </Col>
 
-        <div>
-          <label htmlFor="city">Cidade:</label>
-          <select id="city" name="city">
-            <option value="city1">Cidade 1</option>
-            <option value="city2">Cidade 2</option>
+        <Col>
+          <Label htmlFor="cidade">Cidade:</Label>
+          <select
+            {...register("cidade", { required: true })}
+            id="cidade"
+          >
+            {cidades.map(cidade => (
+              <option key={cidade.id} value={cidade.nome}>
+                {cidade.nome}
+              </option>
+            ))}
           </select>
-        </div>
+          {errors.cidade?.type === "required" && (<Alert>O Email é obrigatorio!</Alert>)}
+        </Col>
 
-        <div>
-          <label htmlFor="message">Mensagem:</label>
-          <textarea id="message" name="message"></textarea>
-        </div>
+        <Col>
+          <Label htmlFor="mensagem">Mensagem:</Label>
+          <textarea
+            {...register("mensagem")}
+            id="mensagem"
+          />
+        </Col>
 
-        <div>
-          <button type="submit">Enviar</button>
-        </div>
+        <Col>
+          <Button type="submit">
+            Enviar
+          </Button>
+        </Col>
       </FormStyle>
     </>
   )

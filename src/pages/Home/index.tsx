@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Card } from "../../components/Card"
 import { Menu } from "../../components/Menu"
 import axios, { AxiosError } from "axios";
-import { IProduto } from "../../interfaces/produtos";
+import { IProduto } from "../../@types/interfaces";
+import { formatValueBR } from "../../services/format";
 
 export const Home = () => {
 
@@ -39,8 +40,8 @@ export const Home = () => {
                   key={produto.id}
                   id={String(produto.id)}
                   nome={produto.nome}
-                  preco={produto.valor}
-                  preco_promo={produto.promo}
+                  preco={formatValueBR(Number(produto.valor))}
+                  preco_promo={formatValueBR(Number(produto.promo))}
                   imagemp={'https://raw.githubusercontent.com/profchines/imagens1Pitchau/main/Imagens1Pitchau/' + produto.imagemp}
                 />
               )

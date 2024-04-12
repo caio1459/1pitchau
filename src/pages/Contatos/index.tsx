@@ -1,18 +1,56 @@
-import { Form } from "../../components/Form"
-import { ContatosStyle } from "./style"
+import { Menu } from "../../components/Menu"
+import { Table, THtr, THTh, TBTr, Td, Button } from "./style"
+import { GlobalContainer } from "../../styles/global"
+import { useEffect, useState } from "react"
+import { IContato } from "../../interfaces/contatos"
+import axios from "axios"
+import { FaEye } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
 
 export const Contatos = () => {
+  const [contatos, setContatos] = useState<IContato[]>([])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/contatos")
+      .then(res => setContatos(res.data))
+      .catch(err => console.error(err))
+  }, [])
+
   return (
     <>
-      <ContatosStyle>
-        <div className="top">
-          <h1>Boas Vindas a 1Pitchau</h1>
-          <p>A 1Pitchau é uma empresa de e-commerce que se destaca pela oferta de produtos de alta qualidade e design exclusivo, abrangendo moda, acessórios, eletrônicos e artigos para o lar. Seu diferencial está na curadoria cuidadosa, seguindo as últimas tendências e padrões de qualidade elevados. A plataforma online oferece uma experiência de compra intuitiva, destacando-se pela sustentabilidade e compromisso com práticas responsáveis. Com atendimento eficiente e entrega rápida, a 1Pitchau se consolida como uma referência no cenário de e-commerce fictício.</p>
-        </div>
-        <div className="form">
-          <Form />
-        </div>
-      </ContatosStyle>
+      <Menu />
+      <GlobalContainer>
+        <h2>Lista de Contatos</h2>
+        <Table>
+          <thead>
+            <THtr>
+              <THTh>Nome</THTh>
+              <THTh>Telefone</THTh>
+              <THTh>Email</THTh>
+              <THTh>Cidade</THTh>
+              <THTh style={{ minWidth: 300 }}>Menssagem</THTh>
+              <THTh>Detalhes</THTh>
+            </THtr>
+          </thead>
+          <tbody>
+            {contatos.map(contato => (
+              <TBTr key={contato.id}>
+                <Td width={300}>{contato.nome}</Td>
+                <Td>{contato.telefone}</Td>
+                <Td>{contato.email}</Td>
+                <Td>{contato.cidade}</Td>
+                <Td>{contato.mensagem}</Td>
+                <Td>
+                  <Button onClick={() => navigate(`/contatos/${contato.id}`)}>
+                    <FaEye />
+                  </Button>
+                </Td>
+              </TBTr>
+            ))}
+          </tbody>
+        </Table>
+      </GlobalContainer>
     </>
   )
 }

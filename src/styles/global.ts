@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -47,4 +47,11 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
+`;
+
+export const GlobalContainer = styled.div`
+  padding-left: 6%;
+  padding-right: 6%;
+  margin-top: 20px;
+  margin-bottom: 40px;
 `;

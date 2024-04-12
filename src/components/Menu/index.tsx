@@ -48,6 +48,12 @@ export const Menu = () => {
                   </NavbarLink>
                 )
               }))}
+              <NavbarLink to={"/sobre"}>
+                Sobre
+              </NavbarLink>
+              <NavbarLink to={"/contatos"}>
+                Contatos
+              </NavbarLink>
             </NavbarLinkContainer>
           </LeftContainer>
           <RightContainer>
@@ -69,6 +75,12 @@ export const Menu = () => {
                   </NavbarLinkExtended>
                 )
               })}
+              <NavbarLinkExtended to={"/sobre"}>
+                Sobre
+              </NavbarLinkExtended>
+              <NavbarLinkExtended to={"/contatos"}>
+                Contatos
+              </NavbarLinkExtended>
             </NavbarExtendedContainer>
           )
         }

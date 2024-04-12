@@ -1,7 +1,14 @@
+import { Menu } from "../../components/Menu"
+import image from "/images/error.png"
+import { Container, Image } from "./style"
+
 export const Erro = () => {
-  return(
+  return (
     <>
-      <h1>Opps... Page not Found</h1>
+      <Menu />
+      <Container>
+        <Image src={image} alt="Pagina não encontrada" />
+      </Container>
     </>
   )
 }

@@ -18,7 +18,7 @@ export const Card: React.FC<ICardProps> = ({ id, imagemp, preco, preco_promo, no
       <Title>{nome}</Title>
       <TitlePreco>{preco}</TitlePreco>
       <TextPromo>{preco_promo}</TextPromo>
-      <Button onClick={() => navigate(`/detalhes/${id}`)}>
+      <Button onClick={() => navigate(`/produto/${id}`)}>
         <TextButton>Detalhes</TextButton>
       </Button>
     </CardBody>

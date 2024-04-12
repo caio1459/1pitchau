@@ -1,27 +1,27 @@
 {
   "categorias": [
     {
-      "id": 1,
+      "id": "1",
       "categoria": "Pen Drive"
     },
     {
-      "id": 2,
+      "id": "2",
       "categoria": "Mouse"
     },
     {
-      "id": 3,
+      "id": "3",
       "categoria": "Teclado"
     },
     {
-      "id": 4,
+      "id": "4",
       "categoria": "Gabinete"
     },
     {
-      "id": 5,
+      "id": "5",
       "categoria": "Monitor"
     },
     {
-      "id": 6,
+      "id": "6",
       "categoria": "HD"
     }
   ],
@@ -145,6 +145,130 @@
       "promoNumber": "109.90",
       "imagemg": "pendrives/pendrive3g.jpg",
       "imagemp": "pendrives/pendrive3p.jpg"
+    }
+  ],
+  "contatos": [
+    {
+      "id": "1",
+      "nome": "Caio",
+      "telefone": "44897454854522",
+      "email": "caio@gmail.com",
+      "cidade": "Umuarama",
+      "mensagem": "E o pix nada ainda"
+    },
+    {
+      "id": "2",
+      "nome": "Zé",
+      "telefone": "44965758787758",
+      "email": "ze@gmail.com",
+      "cidade": "Perobal",
+      "mensagem": "Hoje tem café"
+    },
+    {
+      "id": "55ba",
+      "nome": "Jorge",
+      "telefone": "54444444444444444",
+      "email": "jorge@gmail.com",
+      "cidade": "Campo Grande",
+      "mensagem": "Aoba"
+    },
+    {
+      "id": "9d85",
+      "nome": "Maria",
+      "telefone": "48564185648",
+      "email": "maria@gmail.com",
+      "cidade": "Campinas",
+      "mensagem": "Deixe seu recado"
+    },
+    {
+      "id": "b641",
+      "nome": "Chines",
+      "telefone": "52154632145",
+      "email": "chines@gmail.com",
+      "cidade": "Natal",
+      "mensagem": "é o china"
+    }
+  ],
+  "cidades": [
+    {
+      "id": "1",
+      "nome": "Umuarama"
+    },
+    {
+      "id": "2",
+      "nome": "Perobal"
+    },
+    {
+      "id": "3",
+      "nome": "São Paulo"
+    },
+    {
+      "id": "4",
+      "nome": "Rio de Janeiro"
+    },
+    {
+      "id": "5",
+      "nome": "Brasília"
+    },
+    {
+      "id": "6",
+      "nome": "Salvador"
+    },
+    {
+      "id": "7",
+      "nome": "Fortaleza"
+    },
+    {
+      "id": "8",
+      "nome": "Belo Horizonte"
+    },
+    {
+      "id": "9",
+      "nome": "Recife"
+    },
+    {
+      "id": "10",
+      "nome": "Curitiba"
+    },
+    {
+      "id": "11",
+      "nome": "Manaus"
+    },
+    {
+      "id": "12",
+      "nome": "Porto Alegre"
+    },
+    {
+      "id": "13",
+      "nome": "Belém"
+    },
+    {
+      "id": "14",
+      "nome": "Goiânia"
+    },
+    {
+      "id": "15",
+      "nome": "São Luís"
+    },
+    {
+      "id": "16",
+      "nome": "Maceió"
+    },
+    {
+      "id": "17",
+      "nome": "Campinas"
+    },
+    {
+      "id": "18",
+      "nome": "Campo Grande"
+    },
+    {
+      "id": "19",
+      "nome": "Natal"
+    },
+    {
+      "id": "20",
+      "nome": "Teresina"
     }
   ]
 }
