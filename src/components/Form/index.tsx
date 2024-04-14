@@ -70,7 +70,7 @@ export const Form = () => {
               </option>
             ))}
           </select>
-          {errors.cidade?.type === "required" && (<Alert>O Email é obrigatorio!</Alert>)}
+          {errors.cidade?.type === "required" && (<Alert>A cidade é obrigatorio!</Alert>)}
         </Col>
 
         <Col>
