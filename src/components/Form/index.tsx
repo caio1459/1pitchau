@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { SyntheticEvent, useCallback, useEffect, useState } from "react"
 import { Alert, Button, Col, FormStyle, FormTitle, Label } from "./style"
 import axios from "axios"
 import { useForm } from "react-hook-form"
@@ -14,11 +14,11 @@ export const Form = () => {
       .catch(err => console.error(err))
   }, [])
 
-  const onSubmit = (data: {}) => {
+  const onSubmit = useCallback((data: {}) => {
     axios.post("http://localhost:3000/contatos", data)
       .then(() => reset()) // Limpa os campos do formulário
       .catch(err => console.error(err))
-  }
+  }, [])
 
   return (
     <>
