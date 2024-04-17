@@ -32,6 +32,16 @@ export const Carrinho = () => {
     setValorTotal(total)
   }, [])
 
+  const removeProdutoCarrinho = useCallback((id: number) => {
+    //Pega todos os produtos que não tenha o id do produto clicado
+    let carrinho = carrinhos.filter(produto => produto.id != id)
+    //Adiciona um novo carrinho
+    localStorage.setItem('@1pitchau:carrinho', JSON.stringify(carrinho))
+    setCarrinhos(carrinho)
+    updateValue(carrinho)
+  }, [carrinhos])
+
+
   return (
     <>
       <Menu />
@@ -55,7 +65,7 @@ export const Carrinho = () => {
                 <Td>{formatValueBR(Number(produto.promo))}</Td>
                 <Td>{formatValueBR(produto.total)}</Td>
                 <Td>
-                  <Button type="button">
+                  <Button type="button" onClick={() => removeProdutoCarrinho(produto.id)}>
                     <TextButton>
                       < FaTrash />
                     </TextButton>

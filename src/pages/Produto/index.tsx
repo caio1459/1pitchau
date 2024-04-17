@@ -30,8 +30,9 @@ export const Produto = () => {
       //Pega o valor digitado no input
       let qtd = target.quantidade.value
       if (qtd > 0) {
+        //Adiociona um novo objeto produto com base no objeto antigo com novas propriedades
         let objProduto = {
-          ...produto,
+          ...produto, //Sprad Operator -> se a propriedade existir no objeto ele é adualizado, senão é adicionada uma nova propriedade
           quantidade: qtd,
           total: Number(produto.promo) * qtd
         }
@@ -44,9 +45,20 @@ export const Produto = () => {
           carrinho = JSON.parse(lsCarrinho)
         }
         //Verifica se o carrinho existe
-        if (carrinho.length) {
-          //Adiciona um novo produto no array de carrinho
-          carrinho.push(objProduto)
+        if (carrinho.length > 0) {
+          let igual = false
+          carrinho.forEach(produto => {
+            if (produto.id === objProduto.id) {
+              igual = true
+              let qtd = Number(produto.quantidade) + Number(objProduto.quantidade)
+              produto.quantidade = qtd
+              produto.total = Number(produto.promo) * qtd
+            }
+          })
+          if(!igual){
+            //Adiciona um novo produto no array de carrinho
+            carrinho.push(objProduto)
+          }
           //Converte o array de carrinho em JSON
           localStorage.setItem('@1pitchau:carrinho', JSON.stringify(carrinho))
         } else {

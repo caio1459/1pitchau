@@ -1,4 +1,4 @@
-import { SyntheticEvent, useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { Alert, Button, Col, FormStyle, FormTitle, Label } from "./style"
 import axios from "axios"
 import { useForm } from "react-hook-form"
